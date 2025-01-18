@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Report</title>
+</head>
+<body>
+<h1>Student Report</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Student Name</th>
+        <th>Subject 1</th>
+        <th>Subject 2</th>
+        <th>Subject 3</th>
+        <th>Subject 4</th>
+        <th>Subject 5</th>
+        <th>Mean</th>
+        <th>Median</th>
+        <th>Mode</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="student : ${students}">
+        <td th:text="${student.name}"></td>
+        <td th:if="${student.scores != null and student.scores.size() > 0}" th:text="${student.scores[0].subject1}"></td>
+        <td th:if="${student.scores != null and student.scores.size() > 0}" th:text="${student.scores[0].subject2}"></td>
+        <td th:if="${student.scores != null and student.scores.size() > 0}" th:text="${student.scores[0].subject3}"></td>
+        <td th:if="${student.scores != null and student.scores.size() > 0}" th:text="${student.scores[0].subject4}"></td>
+        <td th:if="${student.scores != null and student.scores.size() > 0}" th:text="${student.scores[0].subject5}"></td>
+
+        <td th:text="${studentMeans[student]}"></td> <!-- Mean -->
+        <td th:text="${studentMedians[student]}"></td> <!-- Median -->
+        <td th:text="${studentModes[student]}"></td> <!-- Mode -->
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
+
