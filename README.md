@@ -31,5 +31,5 @@ To run this project locally, you will need the following installed:
 
 Clone this repository to your local machine:
 ```bash
-git clone https://github.com/yourusername/student-management.git
+git clone https://github.com/engineerLiberty/student-management.git
 
