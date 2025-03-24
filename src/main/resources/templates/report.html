@@ -61,6 +61,29 @@
             color: red;
         }
 
+        .add-score-btn{
+            position: fixed;
+            left: 50px;
+            bottom: 50px;
+        }
+
+        .add-score-btn button{
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px 12px;
+            outline: none;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .add-score-btn button:hover{
+            background-color: #45a049;
+        }
+
     </style>
 </head>
 <body>
@@ -104,5 +127,10 @@
     </tr>
     </tbody>
 </table>
+<div class="add-score-btn">
+    <a href="/">
+        <button>Add Score</button>
+    </a>
+</div>
 </body>
 </html>
