@@ -70,7 +70,7 @@
     </style>
 </head>
 <body>
-<form action="/ems/submit" method="POST">
+<form action="/submit" method="POST">
     <h2>Student Score Submission</h2>
 
     <div class="form-group">
@@ -79,30 +79,29 @@
     </div>
 
     <div class="form-group">
-        <label>Subject 1:</label>
-        <input type="number" name="scores[0].subject1" required>
+        <label>English:</label>
+        <input type="number" name="scores[0].english" required>
     </div>
 
     <div class="form-group">
-        <label>Subject 2:</label>
-        <input type="number" name="scores[0].subject2" required>
+        <label>Mathematics:</label>
+        <input type="number" name="scores[0].mathematics" required>
     </div>
 
     <div class="form-group">
-        <label>Subject 3:</label>
-        <input type="number" name="scores[0].subject3" required>
+        <label>Physics:</label>
+        <input type="number" name="scores[0].physics" required>
     </div>
 
     <div class="form-group">
-        <label>Subject 4:</label>
-        <input type="number" name="scores[0].subject4" required>
+        <label>Chemistry:</label>
+        <input type="number" name="scores[0].chemistry" required>
     </div>
 
     <div class="form-group">
-        <label>Subject 5:</label>
-        <input type="number" name="scores[0].subject5" required>
+        <label>Biology:</label>
+        <input type="number" name="scores[0].biology" required>
     </div>
-
     <button type="submit">Submit</button>
 </form>
 </body>
