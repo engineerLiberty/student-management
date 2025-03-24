@@ -1,10 +1,8 @@
-package com.engineerLiberty.techieAssessment;
+package com.engineerLiberty.techieAssessment.service;
 
 import com.engineerLiberty.techieAssessment.model.Score;
 import com.engineerLiberty.techieAssessment.model.Student;
 import com.engineerLiberty.techieAssessment.repository.StudentRepository;
-import com.engineerLiberty.techieAssessment.service.StudentService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,13 +24,13 @@ public class StudentServiceImpl implements StudentService {
 
     public double calculateMean(Score score) {
         if (score == null) return 0.0;
-        return (score.getSubject1() + score.getSubject2() + score.getSubject3() + score.getSubject4() + score.getSubject5()) / 5.0;
+        return (score.getEnglish() + score.getMathematics() + score.getPhysics() + score.getChemistry() + score.getBiology()) / 5.0;
     }
 
     public double calculateMedian(Score score) {
         if (score == null) return 0.0;
 
-        List<Integer> scores = Arrays.asList(score.getSubject1(), score.getSubject2(), score.getSubject3(), score.getSubject4(), score.getSubject5());
+        List<Integer> scores = Arrays.asList(score.getEnglish(), score.getMathematics(), score.getPhysics(), score.getChemistry(), score.getBiology());
         Collections.sort(scores);
         return scores.get(2); // Middle value in sorted list (since there are 5 subjects)
     }
@@ -41,7 +39,7 @@ public class StudentServiceImpl implements StudentService {
         if (score == null) return 0;
 
         Map<Integer, Long> frequencyMap = new HashMap<>();
-        List<Integer> scoreList = Arrays.asList(score.getSubject1(), score.getSubject2(), score.getSubject3(), score.getSubject4(), score.getSubject5());
+        List<Integer> scoreList = Arrays.asList(score.getEnglish(), score.getMathematics(), score.getPhysics(), score.getChemistry(), score.getBiology());
 
         for (Integer scoreValue : scoreList) {
             frequencyMap.put(scoreValue, frequencyMap.getOrDefault(scoreValue, 0L) + 1);
@@ -58,7 +56,7 @@ public class StudentServiceImpl implements StudentService {
         int subjectCount = 0;
 
         for (Score score : scores) {
-            total += score.getSubject1() + score.getSubject2() + score.getSubject3() + score.getSubject4() + score.getSubject5();
+            total += score.getEnglish() + score.getMathematics() + score.getPhysics() + score.getChemistry() + score.getBiology();
             subjectCount += 5;  // Assuming 5 subjects for each Score
         }
 
@@ -71,11 +69,11 @@ public class StudentServiceImpl implements StudentService {
         List<Integer> allScores = new ArrayList<>();
 
         for (Score score : scores) {
-            allScores.add(score.getSubject1());
-            allScores.add(score.getSubject2());
-            allScores.add(score.getSubject3());
-            allScores.add(score.getSubject4());
-            allScores.add(score.getSubject5());
+            allScores.add(score.getEnglish());
+            allScores.add(score.getMathematics());
+            allScores.add(score.getPhysics());
+            allScores.add(score.getChemistry());
+            allScores.add(score.getBiology());
         }
 
         Collections.sort(allScores);
@@ -88,11 +86,11 @@ public class StudentServiceImpl implements StudentService {
         Map<Integer, Long> frequencyMap = new HashMap<>();
 
         for (Score score : scores) {
-            frequencyMap.put(score.getSubject1(), frequencyMap.getOrDefault(score.getSubject1(), 0L) + 1);
-            frequencyMap.put(score.getSubject2(), frequencyMap.getOrDefault(score.getSubject2(), 0L) + 1);
-            frequencyMap.put(score.getSubject3(), frequencyMap.getOrDefault(score.getSubject3(), 0L) + 1);
-            frequencyMap.put(score.getSubject4(), frequencyMap.getOrDefault(score.getSubject4(), 0L) + 1);
-            frequencyMap.put(score.getSubject5(), frequencyMap.getOrDefault(score.getSubject5(), 0L) + 1);
+            frequencyMap.put(score.getEnglish(), frequencyMap.getOrDefault(score.getEnglish(), 0L) + 1);
+            frequencyMap.put(score.getMathematics(), frequencyMap.getOrDefault(score.getMathematics(), 0L) + 1);
+            frequencyMap.put(score.getPhysics(), frequencyMap.getOrDefault(score.getPhysics(), 0L) + 1);
+            frequencyMap.put(score.getChemistry(), frequencyMap.getOrDefault(score.getChemistry(), 0L) + 1);
+            frequencyMap.put(score.getBiology(), frequencyMap.getOrDefault(score.getBiology(), 0L) + 1);
         }
 
         return Collections.max(frequencyMap.entrySet(), Map.Entry.comparingByValue()).getKey();
@@ -110,7 +108,5 @@ public class StudentServiceImpl implements StudentService {
         }
         return studentMeans;
     }
-
-
 
 }

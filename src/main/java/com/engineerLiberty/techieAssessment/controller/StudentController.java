@@ -1,6 +1,5 @@
 package com.engineerLiberty.techieAssessment.controller;
 
-import com.engineerLiberty.techieAssessment.model.Score;
 import com.engineerLiberty.techieAssessment.model.Student;
 import com.engineerLiberty.techieAssessment.repository.StudentRepository;
 import com.engineerLiberty.techieAssessment.service.StudentService;
@@ -37,11 +36,9 @@ public class StudentController {
     @PostMapping("/submit")
     @Transactional
     public String submitStudentScores(@ModelAttribute Student student) {
-
-        student.getScores().forEach(score -> score.setStudent(student));
-        System.out.println("Received student: " + student);
-        System.out.println("Scores: " + student.getScores());
-
+        if (student.getId() == null) {
+            studentRepository.save(student); // Ensure ID is generated
+        }
 
         if (student.getScores() != null) {
             student.getScores().forEach(score -> score.setStudent(student));
@@ -61,20 +58,24 @@ public class StudentController {
                 student.setScores(new ArrayList<>());
             }
         }
-        Map<Student, Double> studentMeans = studentService.getStudentMeans();
+        Map<Student, Double> studentMeans = new HashMap<>();
         Map<Student, Double> studentMedians = new HashMap<>();
         Map<Student, Integer> studentModes = new HashMap<>();
 
         // Calculate the median and mode for each student
         for (Student student : students) {
             double median = 0.0;
+            double mean = 0.0;
             int mode = 0;
             if (student.getScores() != null && !student.getScores().isEmpty()) {
                 median = studentService.calculateMedian(student.getScores().get(0));
                 mode = studentService.calculateMode(student.getScores().get(0));
+                mean = studentService.calculateMean(student.getScores().get(0));
             }
+
             studentMedians.put(student, median);
             studentModes.put(student, mode);
+            studentMeans.put(student, mean);
         }
 
         model.addAttribute("students", students);

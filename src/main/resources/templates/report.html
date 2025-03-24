@@ -61,6 +61,29 @@
             color: red;
         }
 
+        .add-score-btn{
+            position: fixed;
+            left: 35px;
+            bottom: 50px;
+        }
+
+        .add-score-btn button{
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px 12px;
+            outline: none;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .add-score-btn button:hover{
+            background-color: #45a049;
+        }
+
     </style>
 </head>
 <body>
@@ -69,11 +92,11 @@
     <thead>
     <tr>
         <th>Student Name</th>
-        <th>Subject 1</th>
-        <th>Subject 2</th>
-        <th>Subject 3</th>
-        <th>Subject 4</th>
-        <th>Subject 5</th>
+        <th>English</th>
+        <th>Mathematics</th>
+        <th>Physics</th>
+        <th>Chemistry</th>
+        <th>Biology</th>
         <th>Mean</th>
         <th>Median</th>
         <th>Mode</th>
@@ -82,19 +105,32 @@
     <tbody>
     <tr th:each="student : ${students}">
         <td th:text="${student.name}"></td>
-        <td th:if="${student.scores != null and student.scores.size() > 0}" th:text="${student.scores[0].subject1}"></td>
-        <td th:if="${student.scores != null and student.scores.size() > 0}" th:text="${student.scores[0].subject2}"></td>
-        <td th:if="${student.scores != null and student.scores.size() > 0}" th:text="${student.scores[0].subject3}"></td>
-        <td th:if="${student.scores != null and student.scores.size() > 0}" th:text="${student.scores[0].subject4}"></td>
-        <td th:if="${student.scores != null and student.scores.size() > 0}" th:text="${student.scores[0].subject5}"></td>
-        <td th:text="${studentMeans[student]}"></td> <!-- Mean -->
-        <td th:text="${studentMedians[student]}"></td> <!-- Median -->
-        <td th:text="${studentModes[student]}"></td> <!-- Mode -->
+        <td th:if="${student.scores != null and student.scores.size() > 0}"
+            th:text="${student.scores[0].english}"></td>
+        <td th:if="${student.scores != null and student.scores.size() > 0}"
+            th:text="${student.scores[0].mathematics}"></td>
+        <td th:if="${student.scores != null and student.scores.size() > 0}"
+            th:text="${student.scores[0].physics}"></td>
+        <td th:if="${student.scores != null and student.scores.size() > 0}"
+            th:text="${student.scores[0].chemistry}"></td>
+        <td th:if="${student.scores != null and student.scores.size() > 0}"
+            th:text="${student.scores[0].biology}"></td>
+<!--        <td th:text="${studentMeans[student]}"></td> &lt;!&ndash; Mean &ndash;&gt;-->
+<!--        <td th:text="${studentMedians[student]}"></td> &lt;!&ndash; Median &ndash;&gt;-->
+<!--        <td th:text="${studentModes[student]}"></td> &lt;!&ndash; Mode &ndash;&gt;-->
+        <td th:text="${studentMeans.get(student)}"></td> <!-- Mean -->
+        <td th:text="${studentMedians.get(student)}"></td> <!-- Median -->
+        <td th:text="${studentModes.get(student)}"></td> <!-- Mode -->
     </tr>
     <tr th:if="${#lists.isEmpty(students)}">
         <td colspan="9" class="no-data">No data available</td>
     </tr>
     </tbody>
 </table>
+<div class="add-score-btn">
+    <a href="/">
+        <button>Add Score</button>
+    </a>
+</div>
 </body>
 </html>

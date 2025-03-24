@@ -13,11 +13,11 @@ public class Score {
     private Student student;
 
 
-    private int subject1;
-    private int subject2;
-    private int subject3;
-    private int subject4;
-    private int subject5;
+    private int english;
+    private int mathematics;
+    private int physics;
+    private int chemistry;
+    private int biology;
 
     public Score(Long id, Student student) {
         this.id = id;
@@ -29,46 +29,47 @@ public class Score {
 
 
     // Getters and Setters
-    public int getSubject1() {
-        return subject1;
+    public int getEnglish() {
+        return english;
     }
 
-    public void setSubject1(int subject1) {
-        this.subject1 = subject1;
+    public void setEnglish(int english) {
+        this.english = english;
     }
 
-    public int getSubject2() {
-        return subject2;
+    public int getMathematics() {
+        return mathematics;
     }
 
-    public void setSubject2(int subject2) {
-        this.subject2 = subject2;
+    public void setMathematics(int mathematics) {
+        this.mathematics = mathematics;
     }
 
-    public int getSubject3() {
-        return subject3;
+    public int getPhysics() {
+        return physics;
     }
 
-    public void setSubject3(int subject3) {
-        this.subject3 = subject3;
+    public void setPhysics(int physics) {
+        this.physics = physics;
     }
 
-    public int getSubject4() {
-        return subject4;
+    public int getChemistry() {
+        return chemistry;
     }
 
-    public void setSubject4(int subject4) {
-        this.subject4 = subject4;
+    public void setChemistry(int chemistry) {
+        this.chemistry = chemistry;
     }
 
-    public int getSubject5() {
-        return subject5;
+    public int getBiology() {
+        return biology;
     }
 
-    public void setSubject5(int subject5) {
-        this.subject5 = subject5;
+    public void setBiology(int biology) {
+        this.biology = biology;
     }
 
     public void setStudent(Student student) {
+        this.student = student;
     }
 }

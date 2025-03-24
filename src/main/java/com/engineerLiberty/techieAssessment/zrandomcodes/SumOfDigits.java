@@ -1,4 +1,4 @@
-package com.engineerLiberty.techieAssessment;
+package com.engineerLiberty.techieAssessment.zrandomcodes;
 
 public class SumOfDigits {
 
